@@ -1,0 +1,34 @@
+# argocd-app.yaml
+apiVersion: v1
+kind: Service   
+metadata:
+  name: argocd-app-service
+spec:
+  selector:
+    app.kubernetes.io/name: argocd-app
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: argocd-app
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: argocd-app
+    spec:
+      containers:
+      - name: argocd-app-container
+        image: 061039762031.dkr.ecr.ap-northeast-2.amazonaws.com/eks:c58f10f3a93fde3d2d05ff34777544012f275f17
+        ports:
+          - protocol: TCP
+            containerPort: 8080
