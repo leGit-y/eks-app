@@ -67,7 +67,7 @@ jobs:
         run: |
            docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
            docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
-           sed -i "s|image: .*|image: ${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}|" manifest/argocd-app.yaml
+           sed -i "s|image: .*|image: ${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}|" new-manifest/argocd-app.yaml
         
       - name: Commit and push changes
         run: |
