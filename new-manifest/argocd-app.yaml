@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
       - name: eks-app-container
-        image: 058264320475.dkr.ecr.ap-northeast-2.amazonaws.com/eks-app:774dc93938265a5b9f49e1bdee1e2d2b3e0983c2
+        image: 061039762031.dkr.ecr.ap-northeast-2.amazonaws.com/myecr:0094ff12b754d277100b4c927ad891f1b17596d6
         volumeMounts:
         - name: empty-dir
           mountPath: /mount
